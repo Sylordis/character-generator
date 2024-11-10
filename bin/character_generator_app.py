@@ -41,6 +41,14 @@ class ArgParser:
             const="debug",
         )
         self.parser.add_argument(
+            "-i",
+            "--ignore-undefined",
+            help="If set, ignores the undefined attributes.",
+            dest="ignore_undefined",
+            action="store_const",
+            const=True
+        )
+        self.parser.add_argument(
             "-n",
             "--number",
             help="Instructs to generate N characters.",
@@ -68,4 +76,4 @@ def main():
     dbs = [Path(file).resolve() for file in args.dbs]
     definition = Path(args.definition).resolve()
     check_files_present(dbs + [definition])
-    CharacterGenerator(dbs, definition).generate(args.n_generations)
+    CharacterGenerator(dbs, definition, args).generate(args.n_generations)

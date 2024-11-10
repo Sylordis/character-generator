@@ -15,6 +15,7 @@ class YAMLtags(StrEnum):
     DB_CASCADE_ALL_AFTER = "cascade_all_after"
     DB_CHANCES = "chances"
     DB_DISPLAY = "display"
+    DB_FACTOR = "factor"
     DB_KEY = "key"
     DB_KEYS = "keys"
     DB_DEFAULT_KEY = "default_key"

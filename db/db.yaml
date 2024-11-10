@@ -1,4 +1,3 @@
-
 biological_gender:
   name: "Biological gender"
   type: [percent, stack]
@@ -18,7 +17,7 @@ age:
   type: [percent,based]
 ---
 ethnic_group:
-  name: "Ethnic origin"
+  name: "Ethnic group"
   type: [either]
   keys:
   - strong_majority
