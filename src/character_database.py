@@ -23,8 +23,9 @@ class TraitDatabase:
     types: list[DatabaseTraitType] = field(default_factory=list)
     data: dict = field(default_factory=dict)
 
+
 @dataclass
 class MainDatabase:
     name: str
     file: Path
-    data: dict[str,TraitDatabase] = field(default_factory=dict)
+    data: dict[str, TraitDatabase] = field(default_factory=dict)

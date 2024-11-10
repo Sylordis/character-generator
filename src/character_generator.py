@@ -4,7 +4,12 @@ import random
 from typing import Any
 
 from .character_definition import CharacterDefinition, CharacterDefinitionTrait
-from .character_database import TraitDatabase, DatabaseTraitType, MainDatabase, DatabaseTraitDisplayType
+from .character_database import (
+    TraitDatabase,
+    DatabaseTraitType,
+    MainDatabase,
+    DatabaseTraitDisplayType,
+)
 from .parsers.db_parser import DatabaseParser
 from .parsers.definition_parser import DefinitionParser
 from .parsers.yaml_tags import YAMLtags
@@ -24,7 +29,7 @@ class CharacterGenerator:
         Arguments passed from the ArgParser.
     """
 
-    def __init__(self, dbs: list[Path], definition_file: Path, opts = None):
+    def __init__(self, dbs: list[Path], definition_file: Path, opts=None):
         """
         Creates a new character generator.
 
@@ -98,7 +103,7 @@ class CharacterGenerator:
             display_value = display_value + f" {value}"
         print(display_value)
 
-    def generate_trait_value(self, trait_db: TraitDatabase) -> tuple[Any,dict,dict]:
+    def generate_trait_value(self, trait_db: TraitDatabase) -> tuple[Any, dict, dict]:
         """
         Generates the value for a given trait according to its definition.
 
@@ -117,7 +122,9 @@ class CharacterGenerator:
             self.log.debug(f"percent {curr_value}")
         if DatabaseTraitType.STACK in trait_db.types:
             # Take current value and compare to stacks
-            value, cascades, triggers = self.value_for_stacks(curr_value, trait_db.data.get(YAMLtags.DB_VALUES))
+            value, cascades, triggers = self.value_for_stacks(
+                curr_value, trait_db.data.get(YAMLtags.DB_VALUES)
+            )
         if DatabaseTraitType.ONEOF in trait_db.types:
             value = self.value_for_oneof(trait_db.data.get(YAMLtags.DB_VALUES))
         if value is None:
@@ -127,7 +134,7 @@ class CharacterGenerator:
                 value = "{:.0%}".format(value)
         return value, cascades, triggers
 
-    def value_for_stacks(self, ref_value: float, stacks: list) -> tuple[Any,dict,dict]:
+    def value_for_stacks(self, ref_value: float, stacks: list) -> tuple[Any, dict, dict]:
         """
         Generates the value for a stack.
 
@@ -156,10 +163,12 @@ class CharacterGenerator:
             stack.get(YAMLtags.DB_TEXT) if YAMLtags.DB_TEXT in stack else stack.get(YAMLtags.DB_KEY)
         )
         if YAMLtags.DB_CASCADE in stack or cascades_all:
-            cascades = stack.get(YAMLtags.DB_CASCADE) if YAMLtags.DB_CASCADE in stack else cascades_all
+            cascades = (
+                stack.get(YAMLtags.DB_CASCADE) if YAMLtags.DB_CASCADE in stack else cascades_all
+            )
         return actual_value, cascades, triggers
 
-    def value_for_either(self, data: dict) -> tuple[Any,dict,dict]:
+    def value_for_either(self, data: dict) -> tuple[Any, dict, dict]:
         """
         Generates the value for an either switch by selecting a possible key and generating its value.
 

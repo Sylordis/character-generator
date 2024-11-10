@@ -13,6 +13,7 @@ class CharacterDefinitionTrait:
     trait_name
         Trait name.
     """
+
     source_db: str
     "Database this entry takes its source from."
     trait_name: str
@@ -23,10 +24,11 @@ class CharacterDefinitionTrait:
 class CharacterDefinition:
     """
     A whole character definition.
-    
+
     Attributes
     ---
     traits
         List of traits of this character.
     """
+
     traits: list[CharacterDefinitionTrait] = field(default_factory=list)

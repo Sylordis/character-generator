@@ -46,7 +46,7 @@ class ArgParser:
             help="If set, ignores the undefined attributes.",
             dest="ignore_undefined",
             action="store_const",
-            const=True
+            const=True,
         )
         self.parser.add_argument(
             "-n",
