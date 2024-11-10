@@ -1,0 +1,39 @@
+[project]
+name = "character-generator"
+description = "Modular character generator for RPGs."
+version = "1"
+dependencies = [ "yaml" ]
+requires-python = ">= 3.10"
+authors = [
+    {name = "Sylvain 'Sylordis' Domenjoud"}
+]
+maintainers = [
+    {name = "Sylvain 'Sylordis' Domenjoud"}
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["rpg", "character", "generator"]
+
+[project.scripts]
+character-generator = "bin:main"
+
+[project.urls]
+Homepage = "https://github.com/Sylordis/character-generator"
+Documentation = "https://github.com/Sylordis/character-generator/README.md"
+Repository = "https://github.com/Sylordis/character-generator.git"
+Issues = "https://github.com/Sylordis/character-generator/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = 'test'
+# Log
+log_cli = true
+log_level = 'INFO'
+log_format = '%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)'
+log_date_format = '%Y-%m-%d %H:%M:%S'
+pythonpath = "src"
+
+[tool.black]
+line-length = 100

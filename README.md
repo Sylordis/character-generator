@@ -32,6 +32,8 @@ You can also run `python -m character-generator --help` for full usage descripti
 
 ## Database definition
 
+The database is split in different documents, where each document is a "trait" that can be generated. Some trait may trigger the generation of other traits or may cascade into sub-categories of traits.
+
 ### Types
 
 - `percent`: the caracteristic is determined based on a percentage.

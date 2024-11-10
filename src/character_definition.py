@@ -1,10 +1,32 @@
 from dataclasses import dataclass, field
 
+
 @dataclass
-class CharacterDefinitionEntry:
-    db: str
-    value: str
+class CharacterDefinitionTrait:
+    """
+    An entry from a trait database.
+
+    Attributes
+    ---
+    source_db
+        Database this entry takes its source from.
+    trait_name
+        Trait name.
+    """
+    source_db: str
+    "Database this entry takes its source from."
+    trait_name: str
+    "Trait name."
+
 
 @dataclass
 class CharacterDefinition:
-    entries: list[CharacterDefinitionEntry] = field(default_factory=list)
+    """
+    A whole character definition.
+    
+    Attributes
+    ---
+    traits
+        List of traits of this character.
+    """
+    traits: list[CharacterDefinitionTrait] = field(default_factory=list)
