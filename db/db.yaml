@@ -1,0 +1,253 @@
+
+biological_gender:
+  name: "Biological gender"
+  type: [percent, stack]
+  values:
+  - key: male
+    text: "Male ♂"
+    chances: 49%
+  - key: female
+    text: "Female ♀"
+    chances: 49%
+  - key: other
+    text: "Other (androgynous, asexual, ...)"
+    chances: 2%
+---
+age:
+  name: "Age"
+  type: [percent,based]
+---
+ethnic_group:
+  name: "Ethnic origin"
+  type: [either]
+  keys:
+  - strong_majority
+  - mixed_population
+  default_key: strong_majority
+  strong_majority:
+    type: [percent, stack]
+    values:
+    - key: "Majority (≥ 70%)"
+      chances: 80%
+    - key: "Strong minority (≤ 20%)"
+      chances: 12%
+    - key: "Weak minority (≤ 10%)"
+      chances: 7%
+    - key: "Outsider (≤ 1%)"
+      chances: 1%
+  mixed_population:
+    type: [percent, stack]
+    values:
+    - key: "Majority (≥ 50%)"
+      chances: 50%
+    - key: "Strong minority (≤ 25%)"
+      chances: 25%
+    - key: "Weak minority (≤ 15%)"
+      chances: 23%
+    - key: "Outsider (≤ 5%)"
+      chances: 2%
+---
+weight:
+  name: "Weight"
+  type: [percent,stack,based]
+  values:
+  - key: "Scrawny (-40%)"
+    chances: 2%
+  - key: "Thin (-20%)"
+    chances: 18%
+  - key: "Under average (-10%)"
+    chances: 10%
+  - key: "Average"
+    chances: 40%
+  - key: "Over average (+10%)"
+    chances: 10%
+  - key: "Overweight (+25%)"
+    chances: 12%
+  - key: "Obese (+40%)"
+    chances: 7%
+  - key: "Morbidly obese (+80% or more)"
+    chances: 1%
+---
+height:
+  name: "Height"
+  type: [percent, stack, based]
+  values:
+  - key: "Abnormally short (-25% and less)"
+    chances: 2%
+  - key: "Short (-15%)"
+    chances: 6%
+  - key: "Small (-10% to 5%)"
+    chances: 7%
+  - key: "Average"
+    chances: 70%
+  - key: "Tall (+15%)"
+    chances: 13%
+  - key: "Towering (+40%)"
+    chances: 2%
+---
+social_class:
+  name: "Social class"
+  type: [percent, stack]
+  values:
+  - key: "Lower class (Precarious or slave)"
+    chances: 12%
+  - key: "Lower class (Proletariat)"
+    chances: 13%
+  - key: "Lower class (Worker)"
+    chances: 15%
+  - key: "Middle class (Worker)"
+    chances: 34%
+  - key: "Middle class (Educated)"
+    chances: 10%
+  - key: "Middle class (Bourgeoisie)"
+    chances: 5%
+  - key: "Upper class (Elite)"
+    chances: 6%
+  - key: "Upper class (Aristocracy)"
+    chances: 4%
+  - key: "Upper class (Ruling)"
+    chances: 1%
+---
+education:
+  name: "Education"
+  type: [percent, stack]
+  values:
+  values:
+  - key: "None"
+    chances: 2%
+  - key: "Street (Illiterate)"
+    chances: 6%
+  - key: "Street (Literate) or primary education"
+    chances: 5%
+  - key: "Lower secondary education"
+    chances: 14%
+  - key: "Upper secondary education"
+    chances: 26%
+  - key: "Post-secondary or short tertiary education"
+    chances: 17%
+  - key: "First tertiary degree (Bachelor or equivalent)"
+    chances: 15%
+  - key: "Second tertiary degree (Master or equivalent)"
+    chances: 12%
+  - key: "Third tertiary degree (Doctorate or equivalent)"
+    chances: 3%
+---
+marital_status:
+  name: "Marital status"
+  type: [percent,stack]
+  values:
+  - key: "Single"
+    chances: 33%
+  - key: "Married"
+    chances: 51%
+  - key: "Divorced (if allowed)"
+    chances: 11%
+  - key: "Widow"
+    chances: 5%
+    cascade: { "widow_seeing_someone": 1}
+---
+widow_seeing_someone:
+  type: [percent,stack]
+  values:
+  - key: "Not seeing anyone"
+    chances: 65%
+  - key: "Seeing someone"
+    chances: 35%
+---
+progeny:
+  name: "Progeny"
+  type: [percent,stack]
+  values:
+  - key: "None"
+    chances: 50%
+  - key: "First child on its way"
+    chances: 10%
+  - key: "1 child"
+    chances: 12%
+  - key: "2 children"
+    chances: 18%
+  - key: "3 or 2+1d5"
+    chances: 10%
+---
+employment:
+  name: "Employment"
+  type: [percent, stack]
+  values:
+  - key: "Jobless"
+    chances: 31%
+  - key: "Intermitten"
+    chances: 8%
+  - key: "Part-time"
+    chances: 16%
+  - key: "Full-time"
+    chances: 45%
+---
+spiritual_beliefs:
+  name: "Spiritual beliefs"
+  type: [either]
+  keys:
+  - free_of_belief
+  - religious_nation
+  default_key: free_of_belief
+  free_of_belief:
+    type: [percent, stack]
+    values:
+    - key: "Atheist"
+      chances: 35%
+    - key: "Agnostic"
+      chances: 5%
+      cascade_all_after: { "religious_devotion": 1 }
+    - key: "Major religion"
+      chances: 50%
+    - key: "Minor religion"
+      chances: 10%
+  religious_nation:
+    type: [percent, stack]
+    values:
+    - key: "Atheist"
+      chances: 10%
+    - key: "Agnostic"
+      chances: 5%
+      cascade_all_after: { "religious_devotion": 1 }
+    - key: "Official religion"
+      chances: 60%
+    - key: "Other big religion"
+      chances: 17%
+    - key: "Small religion"
+      chances: 8%
+---
+religious_devotion:
+  name: "Religious devotion"
+  type: [percent, stack]
+  values:
+  - key: "Almost non-believer"
+    chances: 10%
+  - key: "Passive believer"
+    chances: 35%
+  - key: "Firm believer"
+    chances: 35%
+  - key: "Preacher"
+    chances: 15%
+  - key: "Zealot"
+    chances: 5%
+---
+sexuality:
+  name: "Sexuality"
+  type: [percent, stack]
+  values:
+  - key: "Heterosexual"
+    chances: 85%
+  - key: "Queer"
+    chances: 8%
+  - key: "Bisexual"
+    chances: 4%
+  - key: "Homosexual"
+    chances: 3%
+---
+traits:
+  name: "Trait"
+  type: [oneof]
+  values:
+  - a
+  - b
+  - c

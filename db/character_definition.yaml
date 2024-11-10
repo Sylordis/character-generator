@@ -1,0 +1,17 @@
+character:
+  definition:
+  - from: db.yaml
+    values:
+      - biological_gender
+      - age
+      - ethnic_group
+      - weight
+      - height
+      - social_class
+      - education
+      - marital_status
+      - progeny
+      - employment
+      - spiritual_beliefs
+      - sexuality
+      - traits
